@@ -1,7 +1,7 @@
 function reduced_data = applyPCA()
 % applyPCA is a function that use PCA to realize dimentionality reduction
-% Output-:        reduced_data reduced data that preserves at least 95%
-%                 variance of original data
+% Output: reduced_data - reduced data that preserves at least 95%
+%                        variance of original data
 
 load('emotions_data_66.mat')
 
