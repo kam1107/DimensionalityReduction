@@ -7,12 +7,7 @@ function ft_lb = datatrans(raw_data,labels,n)
 %        n        - target emotion label
 % Output: ft_lb   - a 612*133 matrix with a new label column positioned at
 %                   the most right
-<<<<<<< HEAD
- 
-label = targets==n;
-feature = raw_data;
-=======
-                
+
 label = labels==n;
 ft_lb = [raw_data,label];
->>>>>>> be561440dedb8cb8acb0543df19b6527cf5f7d8e
+
