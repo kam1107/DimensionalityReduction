@@ -1,9 +1,7 @@
-function all_reduced_data = applyCFS()
+function all_reduced_data = applyCFS(x,y)
 % applyCFS is a function that use CFS to realize dimentionality reduction
 % Output: all_reduced_data - a cell that contains reduced data for 
 %                            6 emotions
-
-load('emotions_data_66.mat')
 
 num_emotions = max(unique(y));
 all_reduced_data = cell(1,num_emotions);
