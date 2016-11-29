@@ -7,6 +7,6 @@ function [feature,label] = datatrans(raw_data,targets,n)
 %        n        - target emotion label
 % Output: ft_lb   - a 612*133 matrix with a new label column positioned at
 %                   the most right
-                
+ 
 label = targets==n;
 feature = raw_data;
