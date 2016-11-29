@@ -19,15 +19,16 @@ new_dimension = sum(idx)+1;
 
 reduced_data = x*coeff(:,1:new_dimension);
 
+merge_data = [reduced_data,y];
 % plot images
 figure;
-title('PAC');
 for i = 1:num_emotions
-    tmp= reduced_data(reduced_data(:,end)==i,:);
-    plot(tmp(:,1),tmp(:,2),'x');
+    tmp= merge_data(merge_data(:,end)==i,:);
+    plot(tmp(:,1),tmp(:,2),'.','markers',20);
     hold on;
 end
+title('PCA');
 xlabel('PC1') % x-axis label
 ylabel('PC2') % y-axis label
-legend(strcat('Emotion1','Emotion2','Emotion3', 'Emotion4','Emotion5','Emotion6'));
+legend('Emotion1','Emotion2','Emotion3', 'Emotion4','Emotion5','Emotion6');
 hold off;
