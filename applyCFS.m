@@ -17,6 +17,8 @@ for i = 1:num_emotions
     tmp= emotion_cell(emotion_cell(:,end)==0,:);
     plot(tmp(:,1),tmp(:,2),'x');
     hold off;
-    legend('f1','f2');
+    xlabel('PC1') % x-axis label
+    ylabel('PC2') % y-axis label
+    legend(strcat('Emotion',num2str(i)),strcat('Non-Emotion',num2str(i)));
 end
 
