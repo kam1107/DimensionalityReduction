@@ -1,5 +1,5 @@
 function cf_matrix = confusionMatrixForCFS(all_raw_data,t_labels)
-% confusionMatrixForPCA -  create confusion matrix with all the emotions
+% confusionMatrixForCFS -  create confusion matrix with all the emotions
 % Input:   
 %       all_raw_data - a cell contains the reduced data for 6 emotions
 %       t_labels - target labels in column

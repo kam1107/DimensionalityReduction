@@ -8,7 +8,7 @@ function cf_matrix = confusionMatrixForPCA(raw_data,t_labels)
 
 emo_labels_num = max(unique(t_labels));
 
-pred_result = emotionPrediction(raw_data,t_labels);
+pred_result = PCAemotionPrediction(raw_data,t_labels);
 
 % remove rows that both elements are 0
 pred_result(all(pred_result==0,2),:) = [];
