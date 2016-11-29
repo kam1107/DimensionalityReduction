@@ -7,7 +7,7 @@ function [cf_matrix,evl_matrix] = PCAEvaluation()
 load('emotions_data_66.mat');
 
 % PCA
-reduced_data = applyPCA(x);
+reduced_data = applyPCA(x,y);
 
 cf_matrix = confusionMatrixForPCA(reduced_data,y);
 
