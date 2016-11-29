@@ -5,8 +5,9 @@ function all_reduced_data = applyCFS()
 
 load('emotions_data_66.mat')
 
-all_reduced_data = cell(1,6);
-for i = 1:length(y)
+num_emotions = max(unique(y));
+all_reduced_data = cell(1,num_emotions);
+for i = 1:num_emotions
     [ft,lb] = datatrans(x,y,i);
     all_reduced_data{i} = cfs(ft,[],lb,-inf,1);
 end
