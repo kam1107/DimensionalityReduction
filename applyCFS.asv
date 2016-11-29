@@ -1,9 +1,0 @@
-function [reduced_data] = applyCFS()
-% applyCFS is a function that use CFS to realize dimentionality reduction
-% Output-:        rd1-rd6 reduced data for 6 emotions separately
-
-load('emotions_data_66.mat')
-
-for i = 1:length(y)
-    ft_lb = datatra
-end
