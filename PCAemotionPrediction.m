@@ -36,12 +36,12 @@ for i = 1:k
         
         % training set
         trn_idx = idxpool(setdiff(1:end,tst_start:tst_end));
-        [trn_x,coeff]=applyPCA(ft_lb(trn_idx,1:end-1));
+        [trn_x,coeff,new_dimension]=applyPCA(ft_lb(trn_idx,1:end-1));
         trn_ft_lb=[trn_x,ft_lb(trn_idx,end)];
         tree=ID3(trn_ft_lb);
         
         % test
-        tst_data =ft_lb(tst_idx,1:end-1) * coeff;
+        tst_data =ft_lb(tst_idx,1:end-1) * coeff(:,1:new_dimension);
         for j = 1:size(tst_data,1)
             if (travelTree(tree,tst_data(j,:)))
                 tmp_result(tst_idx(j),em) = 1;

@@ -1,4 +1,4 @@
-function [reduced_data,coeff] = applyPCA(x)
+function [reduced_data,coeff,new_dimension] = applyPCA(x)
 % applyPCA is a function that use PCA to realize dimentionality reduction
 % Output: reduced_data - reduced data that preserves at least 95%
 %                        variance of original data
