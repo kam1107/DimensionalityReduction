@@ -26,22 +26,25 @@ tmp_result = zeros(num_examples,max(unique(t_labels)));
 
 % k-fold cross validation (6 trees generated at each fold)
 for i = 1:k 
-    for em = 1:max(unique(t_labels))
-        ft_lb = datatrans(raw_data,t_labels,em);
-        % test set
+     % test set
         tst_start = sum(set_sizes(1:i-1))+1;
         tst_end = tst_start+set_sizes(i)-1;  
         tst_idx = idxpool(tst_start:tst_end);
-        
-        
-        % training set
+     
+     % apply PCA to training set
         trn_idx = idxpool(setdiff(1:end,tst_start:tst_end));
-        [trn_x,coeff,new_dimension]=applyPCA(ft_lb(trn_idx,1:end-1));
-        trn_ft_lb=[trn_x,ft_lb(trn_idx,end)];
-        tree=ID3(trn_ft_lb);
+        [trn_ft,coeff,new_dimension]=applyPCA(raw_data(trn_idx,:));
+       
+     % apply PC and coefficient to test set   
+        tst_data =raw_data(tst_idx,:) * coeff(:,1:new_dimension);
         
-        % test
-        tst_data =ft_lb(tst_idx,1:end-1) * coeff(:,1:new_dimension);
+    for em = 1:max(unique(t_labels))
+       
+        % train decision tree
+        trn_lb= t_labels(trn_idx,:)==em;
+        tree=ID3([trn_ft,trn_lb]);
+        
+        % test       
         for j = 1:size(tst_data,1)
             if (travelTree(tree,tst_data(j,:)))
                 tmp_result(tst_idx(j),em) = 1;
