@@ -6,10 +6,7 @@ function [cf_matrix,evl_matrix] = CFSEvaluation()
 
 load('emotions_data_66.mat');
 
-% CFS
-all_reduced_data = applyCFS(x,y);
-
-cf_matrix = confusionMatrixForCFS(all_reduced_data,y);
+cf_matrix = confusionMatrixForCFS(x,y);
 
 evl_matrix = recallPrecision(cf_matrix,y);
 
