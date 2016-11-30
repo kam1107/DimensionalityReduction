@@ -7,7 +7,7 @@ function pred_result = CFSemotionPrediction(raw_data,t_labels)
 
 % Constant
 k = 10;  % 10 fold cross validation 
-num_examples = size(raw_data,1);
+num_examples = size(raw_data{1},1);
 
 % data partition
 r = mod(num_examples,k);
@@ -43,13 +43,14 @@ for i = 1:k
         % reduced test set
         reduced_tst_data = tst_data(:,selected_idx);
         % train decision tree
-        tree = ID3(datatrans(all_reduced_trn_data{em},trn_label,em)); 
+        ft_lb = datatrans(all_reduced_trn_data{em},t_labels,em);
+        tree = ID3(ft_lb(trn_idx,:)); 
         
         % test
         for j = 1:size(tst_data,1)
-            if (travelTree(tree,reduced_tst_data(j,:)))
+            if (travelTree(tree,tst_data(j,:)))
                 tmp_result(tst_idx(j),em) = 1;
-                pred_result(tst_idx(j),1) = tst_label(j,end);
+                pred_result(tst_idx(j),1) = t_labels(tst_idx(j),end);
             end
         end
     end   
