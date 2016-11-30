@@ -27,7 +27,7 @@ for i = 1:size(F,2)
        end
    end
    
-   cfs_i = r_cf/sqrt(k+r_ff);
+   cfs_i = r_cf/sqrt(k+2*r_ff);
    if cfs_i > cfs_max
        cfs_max = cfs_i;
        cfs_max_idx = i;
@@ -40,6 +40,6 @@ if cfs_max < cur_cfs
     return;
 else
     S_k = [S_k,F(:,cfs_max_idx)];
-    F(:,i) = [];
+    F(:,cfs_max_idx) = [];
     reduced_data = cfs(F,S_k,target,cfs_max,k+1);
 end
