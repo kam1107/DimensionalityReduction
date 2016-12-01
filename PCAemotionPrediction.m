@@ -35,7 +35,7 @@ for i = 1:k
         trn_idx = idxpool(setdiff(1:end,tst_start:tst_end));
         [trn_ft,coeff,new_dimension]=applyPCA(raw_data(trn_idx,:));
        
-     % apply PC and coefficient to test set   
+     % apply coefficient to test set   
         tst_data =raw_data(tst_idx,:) * coeff(:,1:new_dimension);
         
     for em = 1:max(unique(t_labels))
